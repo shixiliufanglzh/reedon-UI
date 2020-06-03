@@ -1,5 +1,7 @@
 import React from 'react';
 import Button, { ButtonType, ButtonSize } from './components/Button/button';
+import Menu from './components/Menu/menu';
+import MenuItem from './components/Menu/menuItem';
 
 interface IShowResult {
   message: string;
@@ -10,6 +12,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Menu defaultIndex={0} onSelect={(index) => {alert(index)}}>
+          <MenuItem index={0}>link 1</MenuItem>
+          <MenuItem index={1} disabled>link 2</MenuItem>
+          <MenuItem index={2}>link 3</MenuItem>
+        </Menu>
+
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
