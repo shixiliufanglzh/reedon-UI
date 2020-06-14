@@ -20,9 +20,9 @@ const verProps: MenuProps = {
 const genMenu = (props: MenuProps) => {
     return (
         <Menu {...props}>
-          <MenuItem index={0}>link 1</MenuItem>
-          <MenuItem index={1} disabled>link 2</MenuItem>
-          <MenuItem index={2}>link 3</MenuItem>
+          <MenuItem>link 1</MenuItem>
+          <MenuItem disabled>link 2</MenuItem>
+          <MenuItem>link 3</MenuItem>
         </Menu>
     )
 }

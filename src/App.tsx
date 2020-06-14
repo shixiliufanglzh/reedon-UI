@@ -1,7 +1,7 @@
 import React from 'react';
-import Button, { ButtonType, ButtonSize } from './components/Button/button';
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
+import SubMenu from './components/Menu/subMenu';
 
 interface IShowResult {
   message: string;
@@ -12,17 +12,21 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu defaultIndex={0} onSelect={(index) => {alert(index)}}>
-          <MenuItem index={0}>link 1</MenuItem>
-          <MenuItem index={1} disabled>link 2</MenuItem>
-          <MenuItem index={2}>link 3</MenuItem>
+        <Menu defaultIndex={0} onSelect={(index) => {alert(index)}} mode='vertical'>
+          <MenuItem>link 1</MenuItem>
+          <MenuItem disabled>link 2</MenuItem>
+          <SubMenu title={'dropdown'}>
+            <MenuItem>dropdown 1</MenuItem>
+            <MenuItem>dropdown 2</MenuItem>
+          </SubMenu>
+          <MenuItem>link 3</MenuItem>
         </Menu>
 
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <code>const A = '1234'</code>
-        <Button
+        {/* <Button
           autoFocus
           btnType={ButtonType.Primary}
           size={ButtonSize.Large}
@@ -65,7 +69,7 @@ function App() {
           href="http://www.zhiheng.space"
         >
           Small Link
-        </Button>
+        </Button> */}
       </header>
     </div>
   );
