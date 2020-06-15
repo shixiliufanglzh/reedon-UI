@@ -5,13 +5,13 @@ import MenuItem from './menuItem';
 
 
 const testProps: MenuProps = {
-    defaultIndex: 0,
+    defaultIndex: '0',
     onSelect: jest.fn(),
     className: 'test'
 }
 
 const verProps: MenuProps = {
-    defaultIndex: 0,
+    defaultIndex: '0',
     mode: 'vertical'
     // onSelect: jest.fn(),
     // className: 'test',
@@ -47,7 +47,7 @@ describe('test menu and menuItem', () => {
         fireEvent.click(thirdItem);
         expect(thirdItem).toHaveClass('is-active');
         expect(activeElement).not.toHaveClass('is-active');
-        expect(testProps.onSelect).toHaveBeenCalledWith(2);
+        expect(testProps.onSelect).toHaveBeenCalledWith('2');
         fireEvent.click(disabledElement);
         expect(disabledElement).not.toHaveClass('is-active');
         expect(testProps.onSelect).not.toHaveBeenNthCalledWith(1);
