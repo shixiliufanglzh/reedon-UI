@@ -10,19 +10,21 @@ export interface MenuProps {
     className?: string;
     mode?: MenuMode;
     style?: React.CSSProperties;
-    onSelect?: selectCallback
+    onSelect?: selectCallback;
+    defaultOpenSubMenus?: string[];
 }
 
 interface IMenuContext {
     index: string;
     onSelect?: selectCallback;
     mode?: MenuMode;
+    defaultOpenSubMenus?: string[];
 }
 
 export const MenuContext = createContext<IMenuContext>({index: '0'})
 
 const Menu: React.FC<MenuProps> = (props) => {
-    const {defaultIndex, className, mode, style, onSelect, children} = props;
+    const {defaultIndex, className, mode, style, onSelect, children, defaultOpenSubMenus} = props;
     const [currentActive, setActive] = useState(defaultIndex)
     const classes = ClassNames('reedon-menu', className, {
         'menu-vertical': mode === 'vertical',
@@ -37,7 +39,8 @@ const Menu: React.FC<MenuProps> = (props) => {
     const passedContext: IMenuContext = {
         index: currentActive ? currentActive : '0',
         onSelect: handleClick,
-        mode
+        mode,
+        defaultOpenSubMenus,
     }
 
     const renderChildren = () => {
@@ -65,7 +68,8 @@ const Menu: React.FC<MenuProps> = (props) => {
 
 Menu.defaultProps = {
     defaultIndex: '0',
-    mode: 'horizontal'
+    mode: 'horizontal',
+    defaultOpenSubMenus: []
 }
 
 export default Menu;
