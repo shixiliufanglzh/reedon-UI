@@ -1,13 +1,11 @@
 import React from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core'
+// import { library } from '@fortawesome/fontawesome-svg-core'
 // import { fas } from '@fortawesome/free-solid-svg-icons'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import Icon from './components/Icon/icon';
-library.add(faCoffee)
+// library.add(faCoffee)
 
 interface IShowResult {
   message: string;
@@ -18,8 +16,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <Icon theme={'warning'} icon={faCoffee}></Icon> */}
-        <Icon theme={'warning'} icon="coffee" size="10x"></Icon>
         <Menu defaultIndex={'0'} onSelect={(index) => {alert(index)}} mode='vertical' defaultOpenSubMenus={['2']}>
           <MenuItem>link 1</MenuItem>
           <MenuItem disabled>link 2</MenuItem>

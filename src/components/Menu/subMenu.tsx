@@ -1,7 +1,11 @@
 import React, { useContext, useState } from 'react';
 import ClassNames from 'classnames';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import { MenuContext } from './menu';
 import { MenuItemProps } from './menuItem';
+import Icon from '../Icon/icon';
+library.add(fas);
 
 export interface SubMenuProps {
     index?: string,
@@ -16,7 +20,9 @@ const SubMenu: React.FC<SubMenuProps> = ({index, title, className, children}) =>
     const isOpend = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false;
     const [menuOpen, setOpen] = useState(isOpend);
     const classes = ClassNames('menu-item submenu-item', className, {
-        'is-active': context.index === index
+        'is-active': context.index === index,
+        'is-opened': menuOpen,
+        'is-vertical': context.mode === 'vertical'
     })
 
     const handleClick = (e: React.MouseEvent) => {
@@ -65,6 +71,7 @@ const SubMenu: React.FC<SubMenuProps> = ({index, title, className, children}) =>
         <li key={index} className={classes} {...hoverEvents}>
             <div className="submenu-title" {...clickEvents}>
                 {title}
+                <Icon icon="angle-down" className="arrow-icon"></Icon>
             </div>
             {renderChildren()}
         </li>
