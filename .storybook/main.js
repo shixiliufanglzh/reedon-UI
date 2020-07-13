@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   addons: [
@@ -5,7 +7,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
   ],
-  webpackFinal: async config => {
+  webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       loader: require.resolve('babel-loader'),
@@ -13,7 +15,10 @@ module.exports = {
         presets: [['react-app', { flow: false, typescript: true }]],
       },
     });
+
     config.resolve.extensions.push('.ts', '.tsx');
+
+    // Return the altered config
     return config;
   },
 };
